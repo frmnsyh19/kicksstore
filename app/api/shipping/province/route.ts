@@ -3,14 +3,12 @@ import { NextResponse } from "next/server";
 
 const BASE_URL = "https://rajaongkir.komerce.id/api/v1";
 
-const ONE_DAY = 60 * 60 * 24;
-
 const rajaOngkir = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
 });
 
-export const revalidate = ONE_DAY;
+export const revalidate = 86400; // 1 hari (60 * 60 * 24)
 
 export async function GET() {
   const apikey = process.env.RAJAONGKIR_API_KEY;
