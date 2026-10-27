@@ -102,6 +102,7 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+
 model ProductImage {
   id        String   @id @default(cuid())
   productId String
@@ -109,6 +110,29 @@ model ProductImage {
   createdAt DateTime @default(now())
 
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+
+model Checkout {
+  id Int @id @default(autoincrement())
+  orderid String @default(cuid())
+  user_id String
+  no_inv String
+  product Json
+  totalproduct String
+  point String?
+  kecamatan String?
+  ongkir Int?
+  city String?
+  phone String?
+  province String?
+  total Float
+  status String @default("pending")
+  kurir String
+  estimasi String
+  user User @relation(fields: [user_id], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model ProductSize {
@@ -134,6 +158,8 @@ model User {
   accounts      Account[]
   roles         String[]        @default(["USER"])
   phone         String?
+  checkouts     Checkout[]
+ 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

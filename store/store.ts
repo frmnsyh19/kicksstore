@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cartSlice";
 import searchSlice from "./SearchSlice";
+import shippingSlice from "./shippingSlice";
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer, // kalau nanti ada slice lain, tambahin di sini: user: userReducer, dst
     paramsSearch: searchSlice,
+    deliverySelected: shippingSlice,
   },
 });
 

@@ -4,6 +4,7 @@ import React from "react";
 import { DetailProductImage } from "./DetailProductImage";
 import { useGetDetailProduct } from "@/services/useGetDetailProduct";
 import AddToCartForm from "./AddToCartForm";
+import SneakerLoader from "./LoadingPage";
 
 export const WrapperDetailBelanja = ({ id }: { id: string }) => {
   const { data, isPending } = useGetDetailProduct(id);
@@ -11,7 +12,7 @@ export const WrapperDetailBelanja = ({ id }: { id: string }) => {
   if (isPending) {
     return (
       <>
-        <p className="">Loading....</p>
+        <SneakerLoader />
       </>
     );
   }

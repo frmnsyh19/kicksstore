@@ -54,6 +54,7 @@ export const ModelName = {
   Payment: 'Payment',
   Product: 'Product',
   ProductImage: 'ProductImage',
+  Checkout: 'Checkout',
   ProductSize: 'ProductSize',
   User: 'User',
   Account: 'Account'
@@ -114,6 +115,30 @@ export const ProductImageScalarFieldEnum = {
 export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
 
 
+export const CheckoutScalarFieldEnum = {
+  id: 'id',
+  orderid: 'orderid',
+  user_id: 'user_id',
+  no_inv: 'no_inv',
+  product: 'product',
+  totalproduct: 'totalproduct',
+  point: 'point',
+  kecamatan: 'kecamatan',
+  ongkir: 'ongkir',
+  city: 'city',
+  phone: 'phone',
+  province: 'province',
+  total: 'total',
+  status: 'status',
+  kurir: 'kurir',
+  estimasi: 'estimasi',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CheckoutScalarFieldEnum = (typeof CheckoutScalarFieldEnum)[keyof typeof CheckoutScalarFieldEnum]
+
+
 export const ProductSizeScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
@@ -168,6 +193,13 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -182,4 +214,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

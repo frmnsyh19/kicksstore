@@ -170,14 +170,14 @@ export default function AddToCartForm({
           type="button"
           onClick={handleAddToCart}
           disabled={!selectedSize}
-          className="flex-1 border border-black text-black py-3 rounded-md text-sm font-medium hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed">
+          className="flex-1 border cursor-pointer border-black text-black py-3 rounded-md text-sm font-medium hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed">
           Tambah ke Keranjang
         </button>
         <button
           type="button"
           onClick={handleBuyNow}
           disabled={!selectedSize}
-          className="flex-1 bg-black text-white py-3 rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed">
+          className="flex-1 bg-black  cursor-pointer text-white py-3 rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed">
           Beli Sekarang
         </button>
       </div>

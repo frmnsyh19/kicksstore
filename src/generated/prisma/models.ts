@@ -11,6 +11,7 @@
 export type * from './models/Payment'
 export type * from './models/Product'
 export type * from './models/ProductImage'
+export type * from './models/Checkout'
 export type * from './models/ProductSize'
 export type * from './models/User'
 export type * from './models/Account'

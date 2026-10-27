@@ -4,7 +4,7 @@ import { CartItem } from "@/lib/Session";
 
 export function useGetCart() {
   return useQuery({
-    queryKey: ["GetCart"],
+    queryKey: ["cart"],
     queryFn: async (): Promise<CartItem[]> => {
       const res = await axios.get("/api/cart");
       return res.data;

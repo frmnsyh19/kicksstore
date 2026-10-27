@@ -46,12 +46,12 @@ export const DetailProductImage = ({
       </div>
 
       {/* Main image */}
-      <div className="flex-1 min-w-0">
-        <div className="w-full aspect-square overflow-hidden rounded-md">
+      <div className="flex-1 min-w-0 h-full">
+        <div className="w-full h-full aspect-square overflow-hidden rounded-md">
           <img
             src={activeImage}
             alt={alt}
-            className="w-full h-full object-cover transition-opacity duration-200"
+            className="w-full object-center transition-opacity duration-200"
           />
         </div>
       </div>

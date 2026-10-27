@@ -25,16 +25,8 @@ export const NavbarSneckers = () => {
 
   return (
     <>
-      <div
-        style={{
-          backgroundColor: "#F4F1EA",
-        }}
-        className="w-full flex justify-center items-center">
-        <div
-          className="w-full"
-          style={{
-            backgroundColor: "#F4F1EA",
-          }}>
+      <div className="w-full bg-white flex justify-center items-center">
+        <div className="w-full">
           <div className="drawer">
             <input
               id="my-drawer-2"
@@ -43,33 +35,38 @@ export const NavbarSneckers = () => {
             />
             <div className="drawer-content flex flex-col">
               {/* Navbar */}
-              <div className="navbar  w-full">
-                <div className="flex-none lg:hidden">
-                  <label
-                    htmlFor="my-drawer-2"
-                    aria-label="open sidebar"
-                    className="btn btn-square btn-ghost drawer-button">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="inline-block h-6 w-6 stroke-current">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                  </label>
+              {/* Navbar */}
+              <div className="navbar w-full">
+                {/* Kiri: hamburger (mobile) + logo */}
+                <div className="navbar-start">
+                  <div className="flex-none lg:hidden">
+                    <label
+                      htmlFor="my-drawer-2"
+                      aria-label="open sidebar"
+                      className="btn btn-square btn-ghost drawer-button">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        className="inline-block h-6 w-6 stroke-current">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M4 6h16M4 12h16M4 18h16"></path>
+                      </svg>
+                    </label>
+                  </div>
+                  <div className="mx-2 px-2">
+                    <Logo />
+                  </div>
                 </div>
-                <div className="mx-2 flex-1 px-2 flex-row">
-                  <Logo />
-                </div>
-                <div className="hidden flex-row gap-2 items-center lg:flex">
+
+                {/* Tengah: menu (desktop saja) */}
+                <div className="navbar-center hidden lg:flex">
                   <ul className="menu menu-horizontal">
-                    {/* Navbar menu content here */}
                     <li>
-                      <a className=" text-lg">Home</a>
+                      <a className="text-lg">Home</a>
                     </li>
                     <li>
                       <a
@@ -85,27 +82,25 @@ export const NavbarSneckers = () => {
                         Sneckers
                       </a>
                     </li>
-
-                    {/* pesanan saya jika sudah login */}
+                    {session && (
+                      <Link className="text-lg ml-1" href={"/myorders"}>
+                        My Orders
+                      </Link>
+                    )}
                   </ul>
                 </div>
-                <div className=" flex justify-end  flex-row gap-1">
+
+                {/* Kanan: search, cart, user */}
+                <div className="navbar-end gap-1">
                   <div className="flex flex-row">
                     <SearchNavbar setActiveSearch={setActiveSearch} />
                     <div className={activeSearch ? "hidden md:block" : "block"}>
                       <Cart />
                     </div>
                     <div className={activeSearch ? "hidden md:block" : "block"}>
+                      {/* isi session ? (...) : (...) tetap sama seperti sebelumnya */}
                       {session ? (
                         <>
-                          {/* <button
-                            style={{
-                              backgroundColor: "#141414",
-                            }}
-                            onClick={() => signOut()}
-                            className="btn btn-sm rounded-2xl">
-                            Sign Out
-                          </button> */}
                           <div className="dropdown dropdown-end">
                             <div
                               tabIndex={0}
@@ -157,7 +152,7 @@ export const NavbarSneckers = () => {
               <ul className="menu bg-base-200 min-h-full w-80 p-4">
                 {/* Sidebar content here */}
                 <li>
-                  <a className=" text-lg">Home</a>
+                  <a className="text-lg">Home</a>
                 </li>
                 <li>
                   <a className="text-lg" onClick={() => setCategory("running")}>
@@ -171,6 +166,11 @@ export const NavbarSneckers = () => {
                     Sneckers
                   </a>
                 </li>
+                {session && (
+                  <Link className="text-lg mt-1" href={"/myorders"}>
+                    My Orders
+                  </Link>
+                )}
               </ul>
             </div>
           </div>

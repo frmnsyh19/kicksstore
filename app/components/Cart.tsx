@@ -55,7 +55,7 @@ export const Cart = () => {
 
     if (itemsToCheckout.length === 0) return;
 
-    localStorage.setItem("checkoutItems", JSON.stringify(itemsToCheckout));
+    sessionStorage.setItem("checkoutItems", JSON.stringify(itemsToCheckout));
     window.location.href = "/checkout";
   };
 
