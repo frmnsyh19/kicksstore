@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 // import { FormBilling } from "./FormBilling";
 import { useSession } from "next-auth/react";
 import { FormBiling } from "./FormBiling";
+import { useRouter } from "next/navigation";
 
 declare global {
   interface Window {
@@ -16,6 +17,12 @@ declare global {
 
 export const Biling = () => {
   const { data: user } = useSession();
+
+  const router = useRouter();
+
+  if (!user) {
+    router.push("/login");
+  }
 
   return (
     <>
