@@ -63,7 +63,9 @@ export const Cart = () => {
     <div className="drawer drawer-end">
       <input id="my-drawer-5" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        <label htmlFor="my-drawer-5" className="drawer-button btn btn-ghost">
+        <label
+          htmlFor="my-drawer-5"
+          className="drawer-button btn btn-ghost btn-sm">
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"

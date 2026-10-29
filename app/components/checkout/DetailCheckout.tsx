@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { formatPrice } from "@/lib/FormatPrice";
 import { useAppSelector } from "@/store/hook";
 // import { useAppSelector } from "@/Store/Store";
@@ -35,7 +34,11 @@ const DetailCheckout = () => {
   return (
     <>
       <div className=" w-full flex  gap-7 flex-col ">
-        <div className="w-full flex flex-col gap-1 p-1 border border-gray-300 shadow-lg">
+        <div className=" w-full flex lg:hidden justify-between p-2 items-center">
+          <p className=" text-2xl uppercase font-bold">Kick`s Store</p>
+          {/* <p className=" text-2xl uppercase font-bold">Checkout</p> */}
+        </div>
+        <div className="w-full flex flex-col gap-1 p-1 border border-gray-300 lg:shadow-lg">
           <div className=" w-full h-10 p-1 border-b border-b-gray-300">
             <p className=" text-lg font-bold">Summry</p>
           </div>
@@ -73,8 +76,8 @@ const DetailCheckout = () => {
           </div>
         </div>
 
-        <div className=" w-full p-1 border border-gray-300 shadow-lg">
-          <div className=" w-full flex justify-start h-9 p-1">
+        <div className=" w-full p-1 border border-gray-300 lg:shadow-lg">
+          <div className=" w-full hidden lg:flex justify-start h-9 p-1">
             <p className=" text-lg capitalize font-bold">Order Details</p>
           </div>
           <div className=" w-full flex flex-col justify-between gap-2">

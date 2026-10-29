@@ -91,8 +91,8 @@ export const NavbarSneckers = () => {
                 </div>
 
                 {/* Kanan: search, cart, user */}
-                <div className="navbar-end gap-1">
-                  <div className="flex flex-row">
+                <div className="navbar-end">
+                  <div className="flex flex-row justify-center items-center">
                     <SearchNavbar setActiveSearch={setActiveSearch} />
                     <div className={activeSearch ? "hidden md:block" : "block"}>
                       <Cart />
@@ -167,9 +167,14 @@ export const NavbarSneckers = () => {
                   </a>
                 </li>
                 {session && (
-                  <Link className="text-lg mt-1" href={"/myorders"}>
-                    My Orders
-                  </Link>
+                  <li>
+                    <a
+                      href="/myorders"
+                      className="text-lg"
+                      onClick={() => setCategory("sneckers")}>
+                      Sneckers
+                    </a>
+                  </li>
                 )}
               </ul>
             </div>

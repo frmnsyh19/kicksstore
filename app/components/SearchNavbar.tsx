@@ -65,7 +65,7 @@ export const SearchNavbar = ({
           setIsSearch(true);
           setActiveSearch(true);
         }}
-        className={`p-2 hover:opacity-70 transition-opacity duration-200 ${
+        className={`p-1 hover:opacity-70 transition-opacity duration-200 ${
           isSearch ? "opacity-0 w-0 pointer-events-none" : "opacity-100"
         }`}>
         <svg

@@ -14,6 +14,7 @@ export const WrapperCheckout = () => {
   return (
     <div className="w-full flex lg:flex-row flex-col-reverse gap-2 lg:p-4">
       <Biling />
+
       <DetailCheckout />
     </div>
   );
