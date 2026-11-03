@@ -14,16 +14,15 @@ declare global {
     };
   }
 }
+type dataUser = {
+  user?: {
+    name?: string | null;
+    email?: string | null;
+    id?: string;
+  };
+};
 
-export const Biling = () => {
-  const { data: user } = useSession();
-
-  const router = useRouter();
-
-  if (!user) {
-    router.push("/login");
-  }
-
+export const Biling = ({ user }: { user?: dataUser }) => {
   return (
     <>
       <div className="w-full flex flex-col p-2 gap-3 border border-gray-200 shadow-lg">
@@ -34,7 +33,7 @@ export const Biling = () => {
         <div className="w-full flex p-1 gap-1">
           <TextField
             label="Name"
-            value={user?.user.name}
+            value={user?.user?.name}
             fullWidth
             aria-readonly
             variant="outlined"
@@ -46,7 +45,7 @@ export const Biling = () => {
             variant="outlined"
             className="w-full"
             aria-readonly
-            value={user?.user.email}
+            value={user?.user?.email}
           />
         </div>
         <FormBiling />

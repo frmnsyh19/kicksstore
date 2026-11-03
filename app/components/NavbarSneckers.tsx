@@ -25,7 +25,7 @@ export const NavbarSneckers = () => {
 
   return (
     <>
-      <div className="w-full bg-white flex justify-center items-center">
+      <div className="w-full bg-white flex justify-center shadow items-center">
         <div className="w-full">
           <div className="drawer">
             <input
@@ -92,7 +92,7 @@ export const NavbarSneckers = () => {
 
                 {/* Kanan: search, cart, user */}
                 <div className="navbar-end">
-                  <div className="flex flex-row justify-center items-center">
+                  <div className="flex flex-row justify-center items-center lg:gap-1">
                     <SearchNavbar setActiveSearch={setActiveSearch} />
                     <div className={activeSearch ? "hidden md:block" : "block"}>
                       <Cart />

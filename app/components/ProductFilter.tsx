@@ -43,7 +43,7 @@ export const ProductFilter = ({
   return (
     <>
       {/* ===== DESKTOP: checkbox vertikal ===== */}
-      <div className="hidden lg:flex w-full bg-base-100 p-6 flex-col gap-2">
+      <div className="hidden lg:flex w-full bg-base-100 p-6 flex-col shadow-lg gap-2">
         <div className="w-full flex flex-col gap-3">
           <p className="text-lg capitalize font-bold">Filter</p>
           <div className="flex flex-col gap-3">

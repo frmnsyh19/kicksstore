@@ -73,7 +73,7 @@ export const DiscoverResult = ({ product }: { product: Product[] }) => {
       {/* <ProductFilterSort /> */}
       <SortFilter setSort={setSort} sort={sort} />
       <div className="flex flex-col lg:flex-row gap-3">
-        <div className="w-80 bg-base-300 flex flex-col gap-2">
+        <div className="lg:w-80 w-full bg-base-300 flex flex-col gap-2">
           <ProductFilter
             setSelectFilter={setSelectFilter}
             selectFilter={selectFilter}
@@ -84,7 +84,7 @@ export const DiscoverResult = ({ product }: { product: Product[] }) => {
             <div
               key={item.id}
               onClick={() => handleDirectDetailProduct(item.id)}
-              className="w-full border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg hover:border-black transition-shadow">
+              className="w-full border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg hover:border-black transition-shadow shadow-xl">
               <div className="w-full h-48 lg:h-60 bg-gray-50">
                 <img
                   src={item.image}

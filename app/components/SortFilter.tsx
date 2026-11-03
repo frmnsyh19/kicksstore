@@ -20,7 +20,7 @@ export const SortFilter = ({ setSort, sort }: Props) => {
   //   }
   // }, [filter, dispacth]);
   return (
-    <div className="p-1 w-full flex justify-end items-center lg:w-fit">
+    <div className="p-1 w-full flex justify-end items-end lg:w-full">
       {/* <select className="select w-40">
         <option disabled={true}>Sort</option>
         <option value="new">Newlest</option>

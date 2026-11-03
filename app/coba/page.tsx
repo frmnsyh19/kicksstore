@@ -1,7 +1,8 @@
 // "use client";
 
 import React from "react";
-import Headerproduct from "../components/Headerproduct";
+
+import { WrapperCoba } from "./WrapperCoba";
 
 // interface Product {
 //   name: string;
@@ -39,7 +40,7 @@ export default function Page() {
   return (
     <>
       <div className="w-full h-full flex flex-col gap-2">
-        <Headerproduct />
+        <WrapperCoba />
         {/* {products
           ? products.map((items, i) => {
             return (

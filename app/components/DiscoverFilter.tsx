@@ -16,8 +16,8 @@ export const DiscoverFilter = ({
   }
 
   return (
-    <div className="w-full flex flex-col gap-1">
-      <div className="w-full flex flex-col gap-1">
+    <div className="w-full flex flex-col gap-1 mt-2">
+      <div className="w-full flex flex-col lg:flex-row gap-1">
         <span className="text-lg">Your Search Result For :</span>
         <p className="text-2xl capitalize font-bold">{query}</p>
       </div>

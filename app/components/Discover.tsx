@@ -17,13 +17,13 @@ export const Discover = ({ query }: { query: string }) => {
 
   return (
     <div className="w-full flex flex-col gap-3 pl-2 pr-2 lg:pl-8 lg:pr-8">
-      <div className="w-full flex flex-row gap-1">
+      {/* <div className="w-full flex flex-row gap-1">
         <div className="flex cursor-pointer flex-row gap-1 p-2 justify-center items-center">
           <BsArrow90DegLeft />
           <span className="font-bold">Back</span>
         </div>
         <div className="flex p-2 cursor-pointer">Home</div>
-      </div>
+      </div> */}
       <DiscoverFilter isProduct={isProduct} query={query} />
       <DiscoverResult product={product ?? []} />
     </div>

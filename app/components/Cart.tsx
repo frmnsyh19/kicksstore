@@ -42,10 +42,6 @@ export const Cart = () => {
     );
   }
 
-  // const handleCheckout = (data: any) => {
-
-  // };
-
   const safeCart = cart ?? [];
 
   const handleCheckout = () => {
