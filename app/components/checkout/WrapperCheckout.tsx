@@ -11,12 +11,12 @@ export const WrapperCheckout = () => {
 
   // console.log(sessioon, "ini cart ku");
 
-  const { data: user,  } = useSession();
+  const { data: user } = useSession();
 
   const router = useRouter();
 
   if (!user) {
-    router.push("/login");
+    router.push("/signin");
   }
 
   // console.log(JSON.parse(sessionStorage.getItem("checkoutItems") || "[]"), "session");

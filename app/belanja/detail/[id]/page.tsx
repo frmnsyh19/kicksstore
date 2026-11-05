@@ -10,7 +10,7 @@ export default async function page({
   const { id } = await params;
 
   return (
-    <div className="w-full h-full lg:h-dvh flex flex-col gap-2">
+    <div className="w-full h-full lg:h-[32rem] flex flex-col">
       <NavbarSneckers />
       <WrapperDetailBelanja id={id} />
     </div>

@@ -37,8 +37,6 @@ export default function AddToCartForm({
 
   const selectedStock = sizes.find((s) => s.size === selectedSize)?.stock ?? 0;
 
-  const dispatch = useAppDispatch();
-
   function increaseQty() {
     setQuantity((prev) => Math.min(prev + 1, selectedStock));
   }
@@ -166,19 +164,19 @@ export default function AddToCartForm({
 
       {/* Tombol Aksi */}
       <div className="flex gap-3">
-        <button
+        {/* <button
           type="button"
           onClick={handleAddToCart}
           disabled={!selectedSize}
           className="flex-1 border cursor-pointer border-black text-black py-3 rounded-md text-sm font-medium hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed">
           Tambah ke Keranjang
-        </button>
+        </button> */}
         <button
           type="button"
-          onClick={handleBuyNow}
+          onClick={handleAddToCart}
           disabled={!selectedSize}
           className="flex-1 bg-black  cursor-pointer text-white py-3 rounded-md text-sm font-medium hover:bg-gray-800 disabled:opacity-40 disabled:cursor-not-allowed">
-          Beli Sekarang
+          Add To Cart
         </button>
       </div>
     </div>

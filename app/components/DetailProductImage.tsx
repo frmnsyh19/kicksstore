@@ -1,72 +1,47 @@
 import React, { useState } from "react";
 
-interface GalleryItem {
+interface GalleryProps {
   id: string;
   url: string;
 }
 
-interface ThumbnailProps {
-  url: string;
-  isActive: boolean;
-  onSelect: () => void;
-  alt: string;
-}
-
-interface DetailProductImageProps {
-  image: string;
-  gallery?: GalleryItem[];
-  alt?: string;
-}
 export const DetailProductImage = ({
   image,
-  gallery = [],
-  alt = "Product image",
-}: DetailProductImageProps) => {
-  const [activeImage, setActiveImage] = useState<string>(image);
+  gallery,
+}: {
+  image: string;
+  gallery: GalleryProps[];
+}) => {
+  const [varian, setVarian] = useState<string>(gallery[0]?.url ?? "");
 
   return (
-    <div className="w-full flex flex-col-reverse lg:flex-row gap-2">
-      {/* Thumbnail list */}
-      <div className="lg:w-20 w-full flex flex-row justify-start items-center lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto">
-        <Thumbnail
-          url={image}
-          isActive={activeImage === image}
-          onSelect={() => setActiveImage(image)}
-          alt={alt}
-        />
-        {gallery.map((item) => (
-          <Thumbnail
-            key={item.id}
-            url={item.url}
-            isActive={activeImage === item.url}
-            onSelect={() => setActiveImage(item.url)}
-            alt={alt}
-          />
+    <div className="w-full h-full flex flex-col-reverse lg:flex-row">
+      <div className="w-full border border-gray-300 p-2 flex gap-2 lg:gap-4 flex-row lg:flex-col lg:w-24">
+        {/* <div
+            onClick={() => setVarian(image)}
+            className={`w-full shadow border ${image === varian ? "border-lime-400" : "border-gray-300"}`}>
+            <img src={imag} className="object-cover" alt="" />
+          </div> */}
+        {gallery.map((items) => (
+          <div
+            key={items.id}
+            onClick={() => setVarian(items.url)}
+            className={`lg:w-full w-17 h-17 shadow  ${items.url === varian ? "border-2 border-lime-400" : "border border-gray-300"}`}>
+            <img
+              src={items.url}
+              className="object-cover w-full h-full"
+              alt=""
+            />
+          </div>
         ))}
       </div>
-
-      {/* Main image */}
-      <div className="flex-1 min-w-0 h-full">
-        <div className="w-full h-full aspect-square overflow-hidden rounded-md">
-          <img
-            src={activeImage}
-            alt={alt}
-            className="w-full object-center transition-opacity duration-200"
-          />
-        </div>
+      <div className="w-full h-full flex items-center justify-center">
+        <img
+          src={varian}
+          alt=""
+          className="max-w-full max-h-full object-contain"
+        />
       </div>
     </div>
   );
 };
-
-const Thumbnail = ({ url, isActive, onSelect, alt }: ThumbnailProps) => (
-  <button
-    type="button"
-    onClick={onSelect}
-    className={`shrink-0 w-20 h-20 p-2 border cursor-pointer transition-colors ${
-      isActive ? "border-orange-400" : "border-gray-200 hover:border-gray-300"
-    }`}
-    aria-pressed={isActive}>
-    <img src={url} alt={alt} className="w-full h-full object-cover" />
-  </button>
-);

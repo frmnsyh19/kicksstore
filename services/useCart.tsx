@@ -22,7 +22,7 @@ export function useAddToCart() {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["GetCart"] });
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
   });
 }

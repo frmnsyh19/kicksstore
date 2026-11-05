@@ -92,14 +92,11 @@ export const DiscoverResult = ({ product }: { product: Product[] }) => {
                   className="w-full h-full object-cover"
                 />
               </div>
-
               <div className="p-3">
                 <h3 className="text-sm font-medium text-gray-900 truncate">
                   {item.name}
                 </h3>
-
                 <p className="text-sm text-gray-500 mt-1">{item.kategori}</p>
-
                 <p className="text-sm text-gray-500 mt-1">
                   Rp {item.price.toLocaleString("id-ID")}
                 </p>

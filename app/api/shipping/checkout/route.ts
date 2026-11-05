@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
 
+class StockError extends Error {}
+
 const bodySchema = z.object({
   point: z.string().trim().min(10, "Alamat minimal 10 karakter"),
   province: z.string().min(1, "Pilih provinsi"),
@@ -87,25 +89,61 @@ export async function POST(req: NextRequest) {
 
     const noInv = generateInvoiceNumber("INV");
 
-    const order = await prisma.checkout.create({
-      data: {
-        user_id: userId,
-        product: items, // snapshot barang + harga saat checkout
-        totalproduct: data?.totalProduct.toString(),
-        point: data?.point,
-        city: data?.city,
-        no_inv: noInv,
-        phone: data?.phone,
-        kecamatan: data?.kecamatan,
-        province: data?.province,
-        ongkir: data?.ongkir,
-        total: data?.subtotal,
-        kurir: data?.kurir.toUpperCase(),
-        estimasi: data?.estimasi,
-      },
-    });
+    // const order = await prisma.checkout.create({
+    //   data: {
+    //     user_id: userId,
+    //     product: items, // snapshot barang + harga saat checkout
+    //     totalproduct: data?.totalProduct.toString(),
+    //     point: data?.point,
+    //     city: data?.city,
+    //     no_inv: noInv,
+    //     phone: data?.phone,
+    //     kecamatan: data?.kecamatan,
+    //     province: data?.province,
+    //     ongkir: data?.ongkir,
+    //     total: data?.subtotal,
+    //     kurir: data?.kurir.toUpperCase(),
+    //     estimasi: data?.estimasi,
+    //   },
+    // });
 
     // Order sudah sukses -> bersihkan item cart yang di-checkout
+
+    const order = await prisma.$transaction(async (tx) => {
+      for (const i of items) {
+        const res = await tx.productSize.updateMany({
+          where: {
+            productId: i.id,
+            size: i.size,
+            stock: { gte: i.quantity },
+          },
+          data: { stock: { decrement: i.quantity } },
+        });
+
+        if (res.count === 0) {
+          throw new StockError(`Stok ${i.name} ukuran ${i.size} tidak cukup`);
+        }
+      }
+
+      return tx.checkout.create({
+        data: {
+          user_id: userId,
+          product: items, // snapshot barang + harga saat checkout
+          totalproduct: data?.totalProduct.toString(),
+          point: data?.point,
+          city: data?.city,
+          no_inv: noInv,
+          phone: data?.phone,
+          kecamatan: data?.kecamatan,
+          province: data?.province,
+          ongkir: data?.ongkir,
+          total: data?.subtotal,
+          kurir: data?.kurir.toUpperCase(),
+          estimasi: data?.estimasi,
+        },
+      });
+    });
+
     try {
       const cartSession = await getSession();
       const ordered = new Set(

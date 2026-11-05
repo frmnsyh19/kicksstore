@@ -21,8 +21,6 @@ export const NavbarSneckers = () => {
 
   const { data: session } = useSession();
 
-  console.log(session, "session");
-
   return (
     <>
       <div className="w-full bg-white flex justify-center shadow items-center">
@@ -78,7 +76,7 @@ export const NavbarSneckers = () => {
                     <li>
                       <a
                         className="text-lg"
-                        onClick={() => setCategory("sneckers")}>
+                        onClick={() => setCategory("sneakers")}>
                         Sneckers
                       </a>
                     </li>
@@ -162,17 +160,14 @@ export const NavbarSneckers = () => {
                 <li>
                   <a
                     className="text-lg"
-                    onClick={() => setCategory("sneckers")}>
+                    onClick={() => setCategory("sneakers")}>
                     Sneckers
                   </a>
                 </li>
                 {session && (
                   <li>
-                    <a
-                      href="/myorders"
-                      className="text-lg"
-                      onClick={() => setCategory("sneckers")}>
-                      Sneckers
+                    <a href="/myorders" className="text-lg">
+                      My Orders
                     </a>
                   </li>
                 )}

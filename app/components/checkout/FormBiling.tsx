@@ -11,6 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import { useAppSelector } from "@/store/hook";
 import { useMutateFormCheckout } from "@/services/useMutateFormCheckout";
+import SneakerLoader from "../LoadingPage";
 
 type ProvinceType = {
   id: number;
@@ -104,6 +105,10 @@ export const FormBiling = () => {
   );
 
   const totalWeight = items.reduce((sum, item) => sum + item.quantity * 500, 0);
+
+  if (loadingProvince) {
+    return <SneakerLoader fullScreen={true} />;
+  }
 
   return (
     <>
